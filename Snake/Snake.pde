@@ -8,17 +8,22 @@ void settings() {
 }
 
 void setup() {
-  frameRate(10);
+  frameRate(5);
 }
 
 void draw() {
-  background(255);
-  graph();
-  snake.create();
-  snake.move();
-  fruit.display();
-  if(snake.collision()){
-     println("Collision"); 
+  println(snake.isGameOver());
+  if (!snake.isGameOver()) {
+    background(255);
+    graph();
+    snake.create();
+    snake.move();
+    fruit.display();
+    if (snake.collision()) {
+      println("Collision");
+    }
+  } else {
+    gameOver();
   }
 }
 
@@ -29,6 +34,10 @@ void graph() {
   for (int i = 0; i < height; i++) {
     line(0, i*widthOfSquare, height, i*widthOfSquare);
   }
+}
+
+void gameOver() {
+  background(255);
 }
 
 void keyPressed() {
