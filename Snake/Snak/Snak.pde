@@ -16,9 +16,10 @@ void draw() {
   graph();
   snake.create();
   snake.move();
-  snake.tail();
   fruit.display();
-  snake.collision();
+  if(snake.collision()){
+     println("Collision"); 
+  }
 }
 
 void graph() {

@@ -1,14 +1,17 @@
 class SnakeCharacter {
-  float x = realGrid(15);
-  float y = realGrid(15);
   float xSpeed = 1;
   float ySpeed = 0;
+  ArrayList<Point> pointList = new ArrayList<Point>();
 
-  ArrayList<SnakeCharacter> snakeLength = new ArrayList<SnakeCharacter>();
+  SnakeCharacter() {
+    pointList.add(new Point(15, 15));
+  }
 
   void create() {
     fill(199, 234, 70);
-    rect(x, y, 20, 20);
+    for (Point point : pointList) {
+      rect(realGrid(point.x), realGrid(point.y), 20, 20);
+    }
   }
 
   void addToSnake() {
@@ -24,39 +27,23 @@ class SnakeCharacter {
   }
 
   void move() {
-    x = x + realGrid(xSpeed);
-    y = y + realGrid(ySpeed);
-
+    for (Point point : pointList) {
+      point.x += xSpeed;
+      point.y += ySpeed;
+    }
     //x = constrain(x, 0, width-20);
     //y = constrain(y, 0, height-20);
   }
 
   boolean collision() {
-    if (x == fruit.fruitx && y == fruit.fruity) {
+    if (pointList.get(0).x == fruit.fruitPoint.x && pointList.get(0).y == fruit.fruitPoint.y) {
       return true;
     } else {
       return false;
     }
   }
-
-  void tail() {
-    if (collision) {
-
-    }
-  }
-}
-
-class Fruit {
-  int fruitx = (int(random(1, 30)))*20;
-  int fruity = (int(random(1, 30)))*20;
-
-  void display() {
-    fill(0);
-    rect(fruitx, fruity, 20, 20);
-  }
-
-  void reset() {
-    fruitx = (int(random(1, 30)))*20;
-    fruity = (int(random(1, 30)))*20;
+  void grow() {
+    Point tail = pointList.get(pointList.size() - 1);
+    Point point = new Point(point.x, point.y);
   }
 }
