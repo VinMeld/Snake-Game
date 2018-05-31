@@ -15,8 +15,8 @@ void setup() {
 void draw() {
   try {
     Thread.sleep(150);
-  }catch(Exception exception){
-      
+  }
+  catch(Exception exception) {
   }
   println(snake.isGameOver());
   //if (!snake.isGameOver()) {
@@ -27,7 +27,8 @@ void draw() {
   boolean isCollision = snake.move();
   fruit.display();
   if (isCollision) {
-    println("Collision");
+     fruit = new Fruit();
+    snake.setFruit(fruit.fruitPoint);
   }
   //} else {
   // gameOver();
