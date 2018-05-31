@@ -1,6 +1,6 @@
 class Point {
-  float x, y;
-  Point(float tempX, float tempY) {
+  int x, y;
+  Point(int tempX, int tempY) {
     x = tempX;
     y = tempY;
   }

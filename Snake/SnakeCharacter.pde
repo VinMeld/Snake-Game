@@ -1,8 +1,8 @@
 class SnakeCharacter {
-  float xSpeed = 1;
-  float ySpeed = 0;
+  int xSpeed = 1;
+  int ySpeed = 0;
+  Point fruit;
   ArrayList<Point> pointList = new ArrayList<Point>();
-
   SnakeCharacter() {
     pointList.add(new Point(15, 15));
   }
@@ -14,28 +14,20 @@ class SnakeCharacter {
     }
   }
 
-  float realGrid(float x) {
+  int realGrid(int x) {
     return x *= 20;
   }
 
-  void direction(float x, float y) {
+  void direction(int x, int y) {
     xSpeed = x;
     ySpeed = y;
   }
 
-  void move() {
+  boolean move() {
     /*println(pointList.get(0).x);
      println(fruit.fruitPoint.x);
      println(pointList.get(0).y);
      println(fruit.fruitPoint.y);*/
-
-    for (Point point : pointList) {
-      point.x += xSpeed;
-      point.y += ySpeed;
-      println(xSpeed);
-      println(point.x);
-    }
-
     //x = constrain(x, 0, width-20);
     //y = constrain(y, 0, height-20);
 
@@ -43,29 +35,27 @@ class SnakeCharacter {
     Point head = pointList.get(0);
 
     // Get the x and y from the snake head
-    float xHead = head.x;
-    float yHead = head.y;
+    int xHead = head.x;
+    int yHead = head.y;
 
     // Calculate the position of the new snake head
-    float newHeadx = xHead + xSpeed;
-    float newHeady = yHead + ySpeed;
+    int newHeadx = xHead + xSpeed;
+    int newHeady = yHead + ySpeed;
 
     // Create the new snake head and add it to the beginning of the list
     Point newHead = new Point(newHeadx, newHeady);
     pointList.add(0, newHead);
 
     // Remove the snake tail if there is no collision
-    if (!collision()) {
+    boolean isCollision = collision(newHead);
+    if (!isCollision) {
       pointList.remove(pointList.size() - 1);
     }
+    return isCollision;
   }
 
-  boolean collision() {
-    if (pointList.get(0).x == fruit.fruitPoint.x && pointList.get(0).y == fruit.fruitPoint.y) {
-      return true;
-    } else {
-      return false;
-    }
+  Point getHead() {
+    return pointList.get(0);
   }
 
   boolean isGameOver() {
@@ -78,6 +68,17 @@ class SnakeCharacter {
     }
   }
 
+  void setFruit(Point tempFruit) {
+    fruit = tempFruit;
+  }
+
+  boolean collision(Point snakeHead) {
+    if (snakeHead.x == fruit.x && snakeHead.y == fruit.y) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   void grow() {
     for (Point point : pointList) {
       //Point tail = pointList.get(pointList.size() - 1);

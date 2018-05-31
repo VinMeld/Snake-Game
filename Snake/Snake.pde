@@ -8,23 +8,30 @@ void settings() {
 }
 
 void setup() {
-  frameRate(5);
+  frameRate(10);
+  snake.setFruit(fruit.fruitPoint);
 }
 
 void draw() {
-  println(snake.isGameOver());
-  if (!snake.isGameOver()) {
-    background(255);
-    graph();
-    snake.create();
-    snake.move();
-    fruit.display();
-    if (snake.collision()) {
-      println("Collision");
-    }
-  } else {
-    gameOver();
+  try {
+    Thread.sleep(150);
+  }catch(Exception exception){
+      
   }
+  println(snake.isGameOver());
+  //if (!snake.isGameOver()) {
+  background(255);
+  graph();
+  snake.create();
+
+  boolean isCollision = snake.move();
+  fruit.display();
+  if (isCollision) {
+    println("Collision");
+  }
+  //} else {
+  // gameOver();
+  //}
 }
 
 void graph() {
