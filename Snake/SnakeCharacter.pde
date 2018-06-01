@@ -86,4 +86,34 @@ class SnakeCharacter {
       pointList.add(0, point);
     }
   }
+
+  //void resetGame() {
+  //  for (int i = pointList.size() - 1; i >= 0; i--) {
+  //    Point pointList = Point.get(i);
+  //    pointList.remove(i);
+  //  }
+  //}
+
+  void changeFruitPos() {
+    for (int i = 0; i < pointList.size(); i++) {
+      if (fruit.x == pointList.get(i).x && fruit.y == pointList.get(i).y) {
+        fruit.x = (int(random(1, 30)));
+        fruit.y = (int(random(1, 30)));
+      }
+    }
+  }
+
+  boolean touch() {
+    Point snakeHead = pointList.get(0);
+    for (int i = 1; i < pointList.size(); i++) {
+      if (snakeHead.x == pointList.get(i).x && snakeHead.y == pointList.get(i).y) {
+        return true;
+      }
+    }
+    return false;
+    //for (int i = 1; i < pointList.size(); i++) {
+    //  if (snakeHead.x != pointList.get(i).x && snakeHead.y != pointList.get(i).y) {
+    //  } else {
+    //}
+  }
 }

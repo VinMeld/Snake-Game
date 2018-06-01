@@ -1,5 +1,5 @@
-int widthOfSquare = 20;
-int width = 30;
+boolean isCollision, gameIsOver = true;
+int widthOfSquare = 20, width = 30;
 SnakeCharacter snake = new SnakeCharacter();
 Fruit fruit = new Fruit();
 
@@ -18,21 +18,23 @@ void draw() {
   }
   catch(Exception exception) {
   }
-  println(snake.isGameOver());
-  //if (!snake.isGameOver()) {
-  background(255);
-  graph();
-  snake.create();
+  println(snake.touch());
+  if (!snake.isGameOver() || !gameIsOver || !snake.touch()) {
+    background(255);
+    graph();
+    snake.create();
 
-  boolean isCollision = snake.move();
-  fruit.display();
+    isCollision = snake.move();
+    fruit.display();
+    snake.changeFruitPos();
+    snake.touch();
+  } else {
+    gameOver();
+  }
   if (isCollision) {
-     fruit = new Fruit();
+    fruit = new Fruit();
     snake.setFruit(fruit.fruitPoint);
   }
-  //} else {
-  // gameOver();
-  //}
 }
 
 void graph() {
@@ -45,7 +47,15 @@ void graph() {
 }
 
 void gameOver() {
+  gameIsOver = snake.isGameOver();
   background(255);
+  snake.xSpeed = 1;
+  snake.ySpeed = 0;
+  if (snake.isGameOver()) {
+    if (keyCode == ENTER) {
+      gameIsOver = false;
+    }
+  }
 }
 
 void keyPressed() {
