@@ -1,14 +1,13 @@
 boolean isCollision, gameIsOver = true;
-int widthOfSquare = 20, width = 30;
+int widthOfSquare = 20, width = 30, totalFruit;
 SnakeCharacter snake = new SnakeCharacter();
 Fruit fruit = new Fruit();
-
+boolean up = false, down= false, left= false, right= true;
 void settings() {
   size(600, 600);
 }
 
 void setup() {
-  frameRate(10);
   snake.setFruit(fruit.fruitPoint);
 }
 
@@ -18,16 +17,14 @@ void draw() {
   }
   catch(Exception exception) {
   }
-  println(snake.touch());
-  if (!snake.isGameOver() || !gameIsOver || !snake.touch()) {
+  if (!(snake.touch() || snake.isGameOver() ||  gameIsOver )) {
     background(255);
+    snake.fruitTotal();
     graph();
     snake.create();
-
     isCollision = snake.move();
     fruit.display();
     snake.changeFruitPos();
-    snake.touch();
   } else {
     gameOver();
   }
@@ -39,6 +36,7 @@ void draw() {
 
 void graph() {
   for (int i = 0; i < width; i++) {
+    stroke(224, 224, 224);
     line(i*widthOfSquare, 0, i*widthOfSquare, height);
   }
   for (int i = 0; i < height; i++) {
@@ -48,11 +46,14 @@ void graph() {
 
 void gameOver() {
   gameIsOver = snake.isGameOver();
+  gameIsOver = snake.touch();
+
   background(255);
-  snake.xSpeed = 1;
-  snake.ySpeed = 0;
+  text("GAME OVER, Press Enter to restart.", 300, 300);
+
   if (snake.isGameOver()) {
     if (keyCode == ENTER) {
+      snake.reset();
       gameIsOver = false;
     }
   }
@@ -60,12 +61,36 @@ void gameOver() {
 
 void keyPressed() {
   if (keyCode == UP) {
-    snake.direction(0, -1);
+    if (!down) {
+      snake.direction(0, -1);
+      up = true;
+      down = false;
+      right = false;
+      left = false;
+    }
   } else if (keyCode == DOWN) {
-    snake.direction(0, 1);
+    if (!up) {
+      snake.direction(0, 1);
+      down = true;
+      up = false;
+      right = false;
+      left = false;
+    }
   } else if (keyCode == LEFT) {
-    snake.direction(-1, 0);
+    if (!right) {
+      snake.direction(-1, 0);
+      down = false;
+      up = false;
+      left = true;
+      right = false;
+    }
   } else if (keyCode == RIGHT) {
-    snake.direction(1, 0);
+    if (!left) {
+      snake.direction(1, 0);  
+      down = false;
+      up = false;
+      right = true;
+      left = false;
+    }
   }
 }

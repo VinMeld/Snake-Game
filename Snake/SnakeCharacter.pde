@@ -6,9 +6,14 @@ class SnakeCharacter {
   SnakeCharacter() {
     pointList.add(new Point(15, 15));
   }
-
+  void fruitTotal() {
+    text(pointList.size(), 10, 10);
+  }
   void create() {
+    int headx = pointList.get(0).x;
+    int heady = pointList.get(0).y;
     fill(199, 234, 70);
+    text(":", headx*20, heady*20);
     for (Point point : pointList) {
       rect(realGrid(point.x), realGrid(point.y), 20, 20);
     }
@@ -61,11 +66,8 @@ class SnakeCharacter {
   boolean isGameOver() {
     if (pointList.get(0).x <= 0 || pointList.get(0).y <= 0 || pointList.get(0).x >= 30 || pointList.get(0).y >= 30) {
       return true;
-    } else if (keyCode == ENTER && isGameOver()) {
-      return false;
-    } else {
-      return false;
-    }
+    } 
+    return false;
   }
 
   void setFruit(Point tempFruit) {
@@ -105,8 +107,10 @@ class SnakeCharacter {
 
   boolean touch() {
     Point snakeHead = pointList.get(0);
+    println("In touch");
     for (int i = 1; i < pointList.size(); i++) {
       if (snakeHead.x == pointList.get(i).x && snakeHead.y == pointList.get(i).y) {
+        println("Touch " );
         return true;
       }
     }
@@ -115,5 +119,11 @@ class SnakeCharacter {
     //  if (snakeHead.x != pointList.get(i).x && snakeHead.y != pointList.get(i).y) {
     //  } else {
     //}
+  }
+  void reset() {
+    xSpeed = 1;
+    ySpeed = 0;
+    pointList = new ArrayList<Point>();
+    pointList.add(new Point(15, 15));
   }
 }
