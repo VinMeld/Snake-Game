@@ -29,13 +29,6 @@ class SnakeCharacter {
   }
 
   boolean move() {
-    /*println(pointList.get(0).x);
-     println(fruit.fruitPoint.x);
-     println(pointList.get(0).y);
-     println(fruit.fruitPoint.y);*/
-    //x = constrain(x, 0, width-20);
-    //y = constrain(y, 0, height-20);
-
     // Get the current head of the snake
     Point head = pointList.get(0);
 
@@ -64,7 +57,7 @@ class SnakeCharacter {
   }
 
   boolean isGameOver() {
-    if (pointList.get(0).x <= 0 || pointList.get(0).y <= 0 || pointList.get(0).x >= 30 || pointList.get(0).y >= 30) {
+    if (pointList.get(0).x < 0 || pointList.get(0).y < 0 || pointList.get(0).x >= 30 || pointList.get(0).y >= 30) {
       return true;
     } 
     return false;
@@ -83,18 +76,10 @@ class SnakeCharacter {
   }
   void grow() {
     for (Point point : pointList) {
-      //Point tail = pointList.get(pointList.size() - 1);
       point = new Point(point.x, point.y);
       pointList.add(0, point);
     }
   }
-
-  //void resetGame() {
-  //  for (int i = pointList.size() - 1; i >= 0; i--) {
-  //    Point pointList = Point.get(i);
-  //    pointList.remove(i);
-  //  }
-  //}
 
   void changeFruitPos() {
     for (int i = 0; i < pointList.size(); i++) {
@@ -110,15 +95,11 @@ class SnakeCharacter {
     println("In touch");
     for (int i = 1; i < pointList.size(); i++) {
       if (snakeHead.x == pointList.get(i).x && snakeHead.y == pointList.get(i).y) {
-        println("Touch " );
+        println("Touch ");
         return true;
       }
     }
     return false;
-    //for (int i = 1; i < pointList.size(); i++) {
-    //  if (snakeHead.x != pointList.get(i).x && snakeHead.y != pointList.get(i).y) {
-    //  } else {
-    //}
   }
   void reset() {
     xSpeed = 1;

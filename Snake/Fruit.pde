@@ -11,7 +11,6 @@ class Fruit {
   }
 
   void reset() {
-    totalFruit++;
     fruitPoint.x = (int(random(1, 30)));
     fruitPoint.y = (int(random(1, 30)));
   }
