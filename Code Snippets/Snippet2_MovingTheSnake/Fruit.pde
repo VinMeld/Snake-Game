@@ -1,3 +1,7 @@
+// Jared Halls, Michael Lam, Vinay Meldrum
+// June 2018
+// This class randomly generates a coordinate for the fruit and displays it on screen
+
 class Fruit {
   // Declaring variables
   int fruitx = (int(random(1, 30)))*20;

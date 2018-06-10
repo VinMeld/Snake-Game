@@ -1,3 +1,7 @@
+// Jared Halls, Michael Lam, Vinay Meldrum
+// June 2018
+// This class serves as the function of the snake, including its movement and its collision with objects.
+
 class SnakeCharacter {
   // Declaring variables
   int xSpeed = 1, ySpeed = 0;
