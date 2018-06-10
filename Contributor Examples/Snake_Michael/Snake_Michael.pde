@@ -1,4 +1,4 @@
-// Jared Halls, Michael Lam, Vinay Meldrum
+// Michael Lam
 // June 2018
 // Coding Challenge 3: Snake game created from scratch
 
@@ -15,15 +15,16 @@ void setup() {
   size(600, 600);
   textAlign(CENTER, CENTER);
   textSize(18);
+  noStroke();
+  ellipseMode(CORNER);
   frameRate(10);
   snake.setFruit(fruit.fruitPoint);
 }
 
 // Runs game
 void draw() {
-  background(255);
+  background(38);
   if (!isGameOver()) { // Runs game only when isGameOver is false
-    drawGrid(); // Draws grid on screen
     snake.create(); // Creates snake on screen
     isCollision = snake.move(); // Boolean checks if snake will continue moving
     snake.score(); // Displays number of fruit collected
@@ -37,15 +38,6 @@ void draw() {
   }
 }
 
-// Draws 30 x 30 grid
-void drawGrid() {
-  stroke(224, 224, 224);
-  for (int i = 0; i < 30; i++) {
-    line(i*widthOfSquare, 0, i*widthOfSquare, 600);
-    line(0, i*widthOfSquare, 600, i*widthOfSquare);
-  }
-}
-
 // Sets isGameOver to true if snake touched border or itself
 boolean isGameOver() {
   return snake.isSnakeTouched() || snake.isBorderTouched();
@@ -53,6 +45,7 @@ boolean isGameOver() {
 
 // Displays Game Over screen
 void gameOver() {
+  fill(255);
   text("GAME OVER", 300, 285);
   text("Press Enter to restart.", 305, 315);
   if (keyCode == ENTER || keyCode == RETURN) { // Restarts game when Enter is pressed

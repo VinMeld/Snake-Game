@@ -11,12 +11,6 @@ class SnakeCharacter {
     pointList.add(new Point(15, 15));
   }
 
-  // Displays score (length of snake)
-  void score() {
-    fill(0);
-    text(pointList.size()-1, 10, 10);
-  }
-
   // Creates snake
   void create() {
     fill(199, 234, 70);
@@ -56,7 +50,7 @@ class SnakeCharacter {
     return isCollision;
   }
 
-  // Sets temporary fruit coordinates 
+  // Sets temporary fruit coordinates
   void setFruit(Point tempFruit) {
     fruit = tempFruit;
   }
@@ -72,28 +66,9 @@ class SnakeCharacter {
 
   // Boolean checks if the border was touched
   boolean isBorderTouched() {
-    if (pointList.get(0).x < 0 || pointList.get(0).y < 0 || pointList.get(0).x >= 30 || pointList.get(0).y >= 30) {
+    if (pointList.get(0).x <= 0 || pointList.get(0).y <= 0 || pointList.get(0).x >= 30 || pointList.get(0).y >= 30) {
       return true;
-    } 
-    return false;
-  }
-
-  // Boolean checks if snake touched it self
-  boolean isSnakeTouched() {
-    Point snakeHead = pointList.get(0);
-    for (int i = 1; i < pointList.size(); i++) {
-      if (snakeHead.x == pointList.get(i).x && snakeHead.y == pointList.get(i).y) {
-        return true;
-      }
     }
     return false;
-  }
-
-  // Resets variables and snake length
-  void reset() {
-    xSpeed = 1;
-    ySpeed = 0;
-    pointList = new ArrayList<Point>();
-    pointList.add(new Point(15, 15));
   }
 }

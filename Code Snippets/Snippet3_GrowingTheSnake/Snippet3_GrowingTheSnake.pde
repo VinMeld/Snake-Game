@@ -1,53 +1,48 @@
+// Jared Halls, Michael Lam, Vinay Meldrum
+// June 2018
+// Coding Challenge 3 (Snippet 3): Growing the snake when touching the fruit
+
+// Declaring variables
 int widthOfSquare = 20;
-int width = 30;
+
+// Declaring instances
 SnakeCharacter snake = new SnakeCharacter();
 Fruit fruit = new Fruit();
 
-void settings() {
-  size(600, 600);
-}
-
+// Initial setup
 void setup() {
+  size(600, 600);
   frameRate(10);
   snake.setFruit(fruit.fruitPoint);
 }
 
+// Runs game
 void draw() {
-  try {
-    Thread.sleep(150);
-  }
-  catch(Exception exception) {
-  }
-  println(snake.isGameOver());
-  //if (!snake.isGameOver()) {
   background(255);
-  graph();
+  drawGrid();
   snake.create();
-
   boolean isCollision = snake.move();
   fruit.display();
   if (isCollision) {
-     fruit = new Fruit();
+    fruit = new Fruit();
     snake.setFruit(fruit.fruitPoint);
   }
-  //} else {
-  // gameOver();
-  //}
 }
 
-void graph() {
-  for (int i = 0; i < width; i++) {
-    line(i*widthOfSquare, 0, i*widthOfSquare, height);
-  }
-  for (int i = 0; i < height; i++) {
-    line(0, i*widthOfSquare, height, i*widthOfSquare);
+// Draws 30 x 30 grid
+void drawGrid() {
+  for (int i = 0; i < 30; i++) {
+    line(i*widthOfSquare, 0, i*widthOfSquare, 600);
+    line(0, i*widthOfSquare, 600, i*widthOfSquare);
   }
 }
 
+// Displays Game Over screen
 void gameOver() {
   background(255);
 }
 
+// Allows snake movement
 void keyPressed() {
   if (keyCode == UP) {
     snake.direction(0, -1);

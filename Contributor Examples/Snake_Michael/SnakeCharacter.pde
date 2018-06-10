@@ -13,7 +13,7 @@ class SnakeCharacter {
 
   // Displays score (length of snake)
   void score() {
-    fill(0);
+    fill(255);
     text(pointList.size()-1, 10, 10);
   }
 
