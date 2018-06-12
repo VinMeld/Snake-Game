@@ -11,3 +11,21 @@ Did you complete this coding challenge? We'd love to see it!
 6. Click on New pull request.
 7. Create the pull request.  
 **Note:** Be sure that the base fork leads to Vinaymeldrum/Snake-Game.
+
+## Examples
+Need ideas? Here are some examples made by the coders.
+### Snake_Jared.pde
+
+### Snake_Michael.pde
+![Preview of Snake_Michael](https://media.giphy.com/media/z3E9CudijCOva4am9v/giphy.gif)  
+#### Changes: 
+- Background colour changed from white to grey
+- Removed grid and shape strokes
+- Fruit are now circles instead of a square
+- Key pressed actions are reversed (player moves opposite from what they pressed)
+
+### Snake_Vinay.pde
+![Preview of Snake_Vinay](https://media.giphy.com/media/5z2jQOX1Q1dMdEQGtC/giphy.gif)  
+#### Changes:
+- Changed fill colour of snake
+- Grid colour changed from black to grey

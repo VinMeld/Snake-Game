@@ -2,6 +2,12 @@
 // June 2018
 // Coding Challenge 3: Snake game created from scratch
 
+// Creative changes:
+// - Background colour changed from white to grey
+// - Removed grid and shape strokes
+// - Fruit are now circles instead of a square
+// - Key pressed actions are reversed (player moves opposite from what they pressed)
+
 // Declaring variables
 boolean isCollision = false, up = false, down = false, left = false, right = true;
 int widthOfSquare = 20;
@@ -55,10 +61,11 @@ void gameOver() {
 }
 
 // Allows snake movement, but inhibits opposite movement
+// Note: directions are reversed in this version
 void keyPressed() {
   if (keyCode == UP) {
     if (!down) {
-      snake.direction(0, -1);
+      snake.direction(0, 1);
       up = true;
       down = false;
       right = false;
@@ -66,7 +73,7 @@ void keyPressed() {
     }
   } else if (keyCode == DOWN) {
     if (!up) {
-      snake.direction(0, 1);
+      snake.direction(0, -1);
       down = true;
       up = false;
       right = false;
@@ -74,7 +81,8 @@ void keyPressed() {
     }
   } else if (keyCode == LEFT) {
     if (!right) {
-      snake.direction(-1, 0);
+      snake.direction(1, 0);  
+      
       down = false;
       up = false;
       left = true;
@@ -82,7 +90,7 @@ void keyPressed() {
     }
   } else if (keyCode == RIGHT) {
     if (!left) {
-      snake.direction(1, 0);  
+      snake.direction(-1, 0);
       down = false;
       up = false;
       right = true;
