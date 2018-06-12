@@ -31,13 +31,4 @@ class SnakeCharacter {
   int realGrid(int x) {
     return x *= 20;
   }
-
-  // Boolean checks if a fruit was touched
-  boolean isFruitTouched() {
-    if (x == fruit.fruitx && y == fruit.fruity) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }

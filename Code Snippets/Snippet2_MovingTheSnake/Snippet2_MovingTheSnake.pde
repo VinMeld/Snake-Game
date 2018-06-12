@@ -22,7 +22,6 @@ void draw() {
   snake.create();
   snake.move();
   fruit.display();
-  snake.isFruitTouched();
 }
 
 // Draws 30 x 30 grid
