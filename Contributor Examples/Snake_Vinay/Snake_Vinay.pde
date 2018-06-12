@@ -40,15 +40,15 @@ void graph() {
     line(0, i*widthOfSquare, height, i*widthOfSquare);
   }
 }
-boolean isGameOver(){
-   return snake.touch() || snake.isGameOver();
+boolean isGameOver() {
+  return snake.touch() || snake.isGameOver();
 }
 void gameOver() {
   background(255);
   text("GAME OVER, Press Enter to restart.", 300, 300);
 
-    if (keyCode == ENTER) {
-      snake.reset(); 
+  if (keyCode == ENTER) {
+    snake.reset();
   }
 }
 

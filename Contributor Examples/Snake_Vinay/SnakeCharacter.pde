@@ -12,8 +12,7 @@ class SnakeCharacter {
   void create() {
     int headx = pointList.get(0).x;
     int heady = pointList.get(0).y;
-    fill(199, 234, 70);
-    text(":", headx*20, heady*20);
+    fill(153, 50, 204);
     for (Point point : pointList) {
       rect(realGrid(point.x), realGrid(point.y), 20, 20);
     }
