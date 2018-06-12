@@ -4,10 +4,7 @@
 
 class SnakeCharacter {
   // Declaring variables
-  int x = realGrid(15), y = realGrid(15), xSpeed = 1, ySpeed = 0;
-
-  // Declaring lists
-  ArrayList<SnakeCharacter> snakeLength = new ArrayList<SnakeCharacter>();
+  int x = 15*20, y = 15*20, xSpeed = 1, ySpeed = 0;
 
   // Creates snake
   void create() {
@@ -23,12 +20,7 @@ class SnakeCharacter {
 
   // Moves snake's direction
   void move() {
-    x = x + realGrid(xSpeed);
-    y = y + realGrid(ySpeed);
-  }
-
-  // Draws the snake within the grid
-  int realGrid(int x) {
-    return x *= 20;
+    x += xSpeed * 20;
+    y += ySpeed * 20;
   }
 }
