@@ -15,6 +15,10 @@ Did you complete this coding challenge? We'd love to see it!
 ## Examples
 Need ideas? Here are some examples made by the coders.
 ### Snake_Jared.pde
+![Preview of Snake_Jared](https://media.giphy.com/media/cC9mEnMptdSycp1J6W/giphy.gif)
+#### Changes:
+- Changed colour of snake
+- Added second fruit to grid
 
 ### Snake_Michael.pde
 ![Preview of Snake_Michael](https://media.giphy.com/media/z3E9CudijCOva4am9v/giphy.gif)  
