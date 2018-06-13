@@ -23,7 +23,7 @@ class SnakeCharacter {
 
   // Creates snake
   void create() {
-    fill(199, 234, 70);
+    fill(75, 2, 99);
     for (Point point : pointList) { // Draws as many squares as fruit collected
       rect(point.x*20, point.y*20, 20, 20); // Draws snake square on a grid space
     }

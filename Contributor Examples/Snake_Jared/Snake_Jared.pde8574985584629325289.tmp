@@ -9,6 +9,7 @@ int widthOfSquare = 20;
 // Declaring instances
 SnakeCharacter snake = new SnakeCharacter();
 Fruit fruit = new Fruit();
+Fruit fruit2 = new Fruit();
 
 // Initial setup
 void setup() {
