@@ -3,6 +3,9 @@
   Koby W.
   June 13 2018
   
+  - Main Program - 
+  
+  Overall Changes:
   * Increased framerate from 10 to 15
   * Changed color of snake to torquise
   * Changed color of fruit to red
