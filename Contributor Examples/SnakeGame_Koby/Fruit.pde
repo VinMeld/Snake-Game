@@ -1,3 +1,16 @@
+/********************
+  Snake game Coding Challenge
+  Koby W.
+  June 13 2018
+  
+  - Fruit class - 
+  
+  Overall changes:
+  * Increased framerate from 10 to 15
+  * Changed color of snake to torquise
+  * Changed color of fruit to red
+********************/
+
 class Fruit {
   // Declaring instances
   Point fruitPoint = new Point();
